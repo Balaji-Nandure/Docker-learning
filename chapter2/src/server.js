@@ -29,7 +29,7 @@ app.use("/users", usersRouter);
 // to determine whether an application is responding.
 app.get("/health", (req, res) => {
   res.json({
-    status: "ok",
+    status: "docker-development",
   });
 });
 
@@ -38,5 +38,5 @@ app.get("/health", (req, res) => {
 // 0.0.0.0 is important inside Docker because it allows
 // connections through the container's network interface.
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port 🤗🤗🤗🤗🤗🤗${PORT}`);
 });

@@ -1,0 +1,29 @@
+# Use Node.js as our base image.
+FROM node:22-alpine
+
+# All application operations happen inside /app.
+WORKDIR /app
+
+# Copy dependency files first.
+COPY package*.json ./
+
+# Install all dependencies.
+#
+# We use npm install here because this is a development
+# image and we want devDependencies such as nodemon.
+RUN npm install
+
+# Copy the source code.
+#
+# During development this will later be replaced/overlaid
+# by a bind mount.
+COPY . .
+
+# Document the port.
+EXPOSE 3000
+
+# Start the development server.
+#
+# npm run dev executes:
+# nodemon src/server.js
+CMD ["npm", "run", "dev"]
